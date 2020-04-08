@@ -2,7 +2,7 @@ name: Nightly workflow
 
 on:
   schedule:
-    - cron: "50 9 * * *"
+    - cron: "55 9 * * *"
 
 jobs:
   first-cron-job:
