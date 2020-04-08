@@ -13,6 +13,7 @@ jobs:
 
   docker-github-actions-job:
     name: "Dockerイメージを使用できるかどうかチェック"
+    runs-on: ubuntu-latest
     container:
       image: circleci/node:10.15.3
     steps:
