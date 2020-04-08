@@ -2,7 +2,7 @@ name: Nightly workflow
 
 on:
   schedule:
-    - cron: "0 17 20 * *"
+    - cron: "0 17 22 * *"
 
 jobs:
   first-cron-job:
@@ -12,6 +12,9 @@ jobs:
       matrix:
         node-version: [10.15.3]
     steps:
+      - uses: actions/checkout@v2
+        with:
+          ref: development
       - name: Display versions
         run: |
           node -v
