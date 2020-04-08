@@ -10,3 +10,13 @@ jobs:
     runs-on: ubuntu-latest # ジョブが実行される仮想環境
     steps: # ジョブ内で実行されるステップ
       - run: echo "Hello, World!" # ステップで実行するコマンド
+
+  docker-github-actions-job:
+    name: "Dockerイメージを使用できるかどうかチェック"
+    container:
+      image: circleci/node:10.15.3
+    steps:
+      - run: |
+        node -v
+        npm -v
+        yarn --version
