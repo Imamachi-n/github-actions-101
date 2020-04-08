@@ -1,0 +1,12 @@
+on:
+  push:
+    branches: [master]
+
+name: github-actions-101
+
+jobs:
+  first-github-actions-job: # ジョブの ID（jobs 内でユニークであればよい）
+    name: "日本語がかけるかどうかチェック" # ジョブ名
+    runs-on: ubuntu-latest # ジョブが実行される仮想環境
+    steps: # ジョブ内で実行されるステップ
+      - run: echo "Hello, World!" # ステップで実行するコマンド
