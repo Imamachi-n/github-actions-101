@@ -17,7 +17,21 @@ jobs:
     container:
       image: circleci/node:10.15.3
     steps:
-      - run: |
+      - name: Display versions
+        run: |
+          node -v
+          npm -v
+          yarn --version
+
+  vm-github-actions-job:
+    name: "VMでNode.jsを使用できるかどうかチェック"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.15.3]
+    steps:
+      - name: Display versions
+        run: |
           node -v
           npm -v
           yarn --version
