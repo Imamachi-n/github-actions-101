@@ -1,8 +1,0 @@
-name: Sub Actions
-
-jobs:
-  sub-actions-job:
-    name: "サブアクション"
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "サブアクションが実行されました！"

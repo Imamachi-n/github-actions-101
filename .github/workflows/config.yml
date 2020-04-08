@@ -35,10 +35,9 @@ jobs:
           node -v
           npm -v
           yarn --version
-
-  run-sub-actions-job:
-    name: "サブアクションが実行できるかどうかチェック"
-    runs-on: ubuntu-latest
-    steps:
-      - name: Run Sub Action
-        uses: ./.github/actions/subActions
+  # run-sub-actions-job:
+  #   name: "サブアクションが実行できるかどうかチェック"
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - name: Run Sub Action
+  #       uses: ./.github/actions/subActions
