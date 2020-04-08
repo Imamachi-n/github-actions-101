@@ -17,6 +17,6 @@ jobs:
       image: circleci/node:10.15.3
     steps:
       - run: |
-        node -v
-        npm -v
-        yarn --version
+          node -v
+          npm -v
+          yarn --version
