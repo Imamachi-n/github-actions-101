@@ -1,8 +1,8 @@
-name: Nightly workflow
+name: Cron test
 
 on:
   schedule:
-    - cron: "55 9 * * *"
+    - cron: "55 9 * * *" # UTCであることに注意。日本標準時の現在時刻(JST/UTC+0900)なので、日本時間から「-9時間」
 
 jobs:
   first-cron-job:
@@ -12,9 +12,9 @@ jobs:
       matrix:
         node-version: [10.15.3]
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v2 # git checkoutを使用
         with:
-          ref: development
+          ref: development # 特定のbranchにチェックアウトできる
       - name: Display versions
         run: |
           node -v
