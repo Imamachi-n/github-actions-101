@@ -1,0 +1,19 @@
+name: Nightly workflow
+
+on:
+  schedule:
+    - cron: "0 17 20 * *"
+
+jobs:
+  first-cron-job:
+    name: "Cronが実行できるかどうかチェック"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.15.3]
+    steps:
+      - name: Display versions
+        run: |
+          node -v
+          npm -v
+          yarn --version
