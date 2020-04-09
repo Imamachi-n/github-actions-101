@@ -20,10 +20,13 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       # AWS CLIとEB CLIのセットアップ/動作確認
+      - uses: actions/setup-python@v1
+        with:
+          python-version: "3.7"
       - name: Install AWS cli
         working-directory: /tmp
         run: |
-          pip install awscli awsebcli==3.14.11 --upgrade --user
+          pip install awsebcli==3.14.11 --upgrade --user
       - run: aws --version
       - run: eb --version
       - name: Configure AWS Credentials
