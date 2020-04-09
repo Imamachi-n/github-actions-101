@@ -1,6 +1,7 @@
 on:
   push:
-    branches: [master]
+    branches-ignore:
+      - master
 
 name: github-actions-101
 

@@ -1,6 +1,7 @@
 on:
-push:
-  branches: [master]
+  push:
+    branches:
+      - master
 
 name: github-actions-101-mongodb
 
@@ -23,9 +24,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Display versions
-        run: | # v10.15.3, 6.14.4, 1.22.4
-          node -v 
-          npm -v
-          yarn --version
-          mongo --version
+      - run: node -v
+      - run: npm -v
+      - run: yarn --version
+      - run: mongo --version
