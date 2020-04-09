@@ -19,6 +19,7 @@ jobs:
           - 27017:27017
         env:
           TZ: "/usr/share/zoneinfo/Asia/Tokyo"
+        options: --name mongodb
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -27,4 +28,7 @@ jobs:
       - run: node -v
       - run: npm -v
       - run: yarn --version
-      - run: mongo --version
+      - run: |
+          docker exec -it mongodb bash
+          mongo --version
+          exit
