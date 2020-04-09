@@ -48,13 +48,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
       - name: Display versions
-        run: | # v12.16.1, 6.14.4, 1.22.4
+        run: | # v10.15.3, 6.14.4, 1.22.4
           node -v 
           npm -v
           yarn --version
-  # run-sub-actions-job:
-  #   name: "サブアクションが実行できるかどうかチェック"
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Run Sub Action
-  #       uses: ./.github/actions/subActions

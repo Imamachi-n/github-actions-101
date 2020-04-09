@@ -1,0 +1,31 @@
+on:
+push:
+  branches: [master]
+
+name: github-actions-101-mongodb
+
+jobs:
+  vm-mongodb-github-actions-job:
+    name: "VMでNode.js/MongoDBを使用できるかどうかチェック"
+    runs-on: ubuntu-latest
+    strategy:
+    matrix:
+      node-version: [10.15.3]
+    services:
+      mongodb:
+        image: circleci/mongo:3.6.9
+        ports:
+          - 27017:27017
+        env:
+          TZ: "/usr/share/zoneinfo/Asia/Tokyo"
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Display versions
+        run: | # v10.15.3, 6.14.4, 1.22.4
+          node -v 
+          npm -v
+          yarn --version
+          mongo --version
