@@ -18,21 +18,38 @@ jobs:
       image: circleci/node:10.15.3
     steps:
       - name: Display versions
-        run: |
+        run: | # v10.15.3, 6.4.1, 1.13.0
           node -v
           npm -v
           yarn --version
 
-  vm-github-actions-job:
-    name: "VMでNode.jsを使用できるかどうかチェック"
+  vm-github-actions-job-ng:
+    name: "VMでNode.jsを使用できるかどうかチェック - NG"
     runs-on: ubuntu-latest
     strategy:
       matrix:
         node-version: [10.15.3]
     steps:
       - name: Display versions
-        run: |
-          node -v
+        run: | # v12.16.1, 6.14.4, 1.22.4
+          node -v 
+          npm -v
+          yarn --version
+
+  vm-github-actions-job-ok:
+    name: "VMでNode.jsを使用できるかどうかチェック - OK"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.15.3]
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: Display versions
+        run: | # v12.16.1, 6.14.4, 1.22.4
+          node -v 
           npm -v
           yarn --version
   # run-sub-actions-job:

@@ -48,7 +48,7 @@ jobs:
 
 ## VM 上で特定のバージョンの Node.js を動作させる
 
-マトリクスビルドの書き方を使って、特定の Node.js のバージョンで動作させることも可能。上記の Docker イメージを使ったやり方よりも高速。
+`actions/setup-node@v1` を使い、特定の Node.js をセットアップすることもできる。また、このとき、マトリクスビルドの書き方を使って、複数の Node.js のバージョンで動作させることも可能。上記の Docker イメージを使ったやり方よりも高速。
 
 ```yml
 on:
@@ -65,12 +65,22 @@ jobs:
       matrix:
         node-version: [10.15.3]
     steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
       - name: Display versions
         run: |
           node -v
           npm -v
           yarn --version
 ```
+
+### 参考資料
+
+[Software installed on GitHub-hosted runners](https://help.github.com/en/actions/reference/software-installed-on-github-hosted-runners)  
+[GitHub Actions - Ubuntu 18.04.4 LTS](https://github.com/actions/virtual-environments/blob/master/images/linux/Ubuntu1804-README.md)
+[GitHub Actions - setup-node](https://github.com/actions/setup-node)
 
 ## Cron ジョブを実行する
 
