@@ -1,6 +1,7 @@
 on:
   push:
-    branches:
+    # branches:
+    branches-ignore:
       - master
 
 name: github-actions-101-mongodb
@@ -28,7 +29,27 @@ jobs:
       - run: node -v
       - run: npm -v
       - run: yarn --version
-      - run: |
-          docker exec -it mongodb bash
-          mongo --version
-          exit
+
+  docker-mongodb-github-actions-job:
+    name: "DockerでNode.js/MongoDBを使用できるかどうかチェック"
+    runs-on: ubuntu-latest
+    container:
+      image: circleci/node:10.15.3
+      env:
+        TZ: "/usr/share/zoneinfo/Asia/Tokyo"
+    services:
+      mongodb:
+        image: circleci/mongo:3.6.9
+        ports:
+          - 27017:27017
+        env:
+          TZ: "/usr/share/zoneinfo/Asia/Tokyo"
+        options: --name mongodb
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: node -v
+      - run: npm -v
+      - run: yarn --version
