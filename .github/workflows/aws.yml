@@ -53,6 +53,9 @@ jobs:
         uses: actions/setup-python@v1
         with:
           python-version: "3.7"
+      - name: Install awsebcli
+        run: |
+          pip install --upgrade awsebcli
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
         with:
