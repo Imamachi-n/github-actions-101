@@ -173,6 +173,21 @@ steps:
 
 ## キャッシュを使用する
 
+```yml
+steps:
+  # yarnのキャッシュを取得
+  - name: Get yarn cache directory path
+    id: yarn-cache-dir-path # このID（steps.yarn-cache-dir-path.outputs）でアクセスできるようになる
+    run: echo "::set-output name=dir::$(yarn cache dir)" # dirプロパティとしてキャッシュを指定
+  - uses: actions/cache@v1
+    id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+    with:
+      path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+      key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+      restore-keys: |
+        ${{ runner.os }}-yarn-
+```
+
 ### リファレンス
 
 [GitHub Actions - cache](https://github.com/actions/cache)
