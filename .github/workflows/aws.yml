@@ -25,5 +25,5 @@ jobs:
         with:
           python-version: "3.7"
       - name: Install awsebcli
-        run: pip install -U awsebcli
+        run: pip install --upgrade awsebcli
       - run: eb --version
