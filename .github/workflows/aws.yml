@@ -23,7 +23,7 @@ jobs:
       - name: Install AWS cli
         working-directory: /tmp
         run: |
-          pip install awsebcli==3.14.11 --upgrade
+          pip install awscli awsebcli==3.14.11 --upgrade --user
       - run: aws --version
       - run: eb --version
       - name: Configure AWS Credentials
