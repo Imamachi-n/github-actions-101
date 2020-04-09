@@ -171,6 +171,12 @@ steps:
 
 [jobs.<job_id>.steps.run](https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepsrun)
 
+## 暗号化されたシークレットの作成と保存
+
+### リファレンス
+
+[GitHub Actions - 暗号化されたシークレットの作成と保存](https://help.github.com/ja/actions/configuring-and-managing-workflows/creating-and-storing-encrypted-secrets)
+
 ## キャッシュを使用する
 
 ```yml
@@ -187,6 +193,18 @@ steps:
       restore-keys: |
         ${{ runner.os }}-yarn-
 ```
+
+## VM で使用できるもの一覧
+
+### リファレンス
+
+[Software installed on GitHub-hosted runners](https://help.github.com/en/actions/reference/software-installed-on-github-hosted-runners)
+
+## AWS のクレデンシャル情報の読み込み
+
+### リファレンス
+
+[configure-aws-credentials](https://github.com/aws-actions/configure-aws-credentials)
 
 ### リファレンス
 

@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - master
+      - development
 
 # secretsを設定した後に実行。
 name: github-actions-101-yarn-caches
