@@ -34,3 +34,30 @@ jobs:
           echo "region = ap-northeast-1" >>  ~/.aws/credentials
       - run: eb --version
       - run: aws s3 ls
+
+  aws-init-aws-action:
+    name: "AWS CLIとEB CLIが使えるかどうかチェック"
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [10.15.3]
+    steps:
+      # Node.jsセットアップ
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # AWS CLIとEB CLIのセットアップ/動作確認
+      - name: Setup Python environment
+        uses: actions/setup-python@v1
+        with:
+          python-version: "3.7"
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ap-northeast-1
+      - run: eb --version
+      - run: aws s3 ls
