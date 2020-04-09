@@ -171,6 +171,13 @@ steps:
 
 [jobs.<job_id>.steps.run](https://help.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idstepsrun)
 
+## キャッシュを使用する
+
+### リファレンス
+
+[GitHub Actions - cache](https://github.com/actions/cache)
+[GitHub Actions - cache - node yarn](https://github.com/actions/cache/blob/master/examples.md#node---yarn)
+
 ## 参考資料
 
 [GitHub Actions のワークフロー構文](https://help.github.com/ja/actions/reference/workflow-syntax-for-github-actions)  

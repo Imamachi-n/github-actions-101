@@ -1,0 +1,35 @@
+on:
+  push:
+    branches:
+      - master
+
+# secretsを設定した後に実行。
+name: github-actions-101-yarn-caches
+
+jobs:
+  secrets:
+    runs-on: ubuntu-18.04
+    strategy:
+      matrix:
+        node-version: [10.15.3]
+    steps:
+      # Node.jsのバージョン指定
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      # yarnのキャッシュを取得
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path # このID（steps.yarn-cache-dir-path.outputs）でアクセスできるようになる
+        run: echo "::set-output name=dir::$(yarn cache dir)" # dirプロパティとしてキャッシュを指定
+      - uses: actions/cache@v1
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      # パッケージのインストールを実行
+      - run: yarn install
