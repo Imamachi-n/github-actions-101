@@ -10,8 +10,8 @@ jobs:
     name: "VMでNode.js/MongoDBを使用できるかどうかチェック"
     runs-on: ubuntu-latest
     strategy:
-    matrix:
-      node-version: [10.15.3]
+      matrix:
+        node-version: [10.15.3]
     services:
       mongodb:
         image: circleci/mongo:3.6.9
