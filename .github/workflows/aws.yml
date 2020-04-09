@@ -33,5 +33,7 @@ jobs:
           echo "aws_secret_access_key = ${AWS_SECRET_ACCESS_KEY}" >>  ~/.aws/credentials
           echo "region = ap-northeast-1" >>  ~/.aws/credentials
       - run: eb --version
-      - run: eb init --profile default
       - run: eb create dev-env
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
