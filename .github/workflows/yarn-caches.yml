@@ -1,7 +1,7 @@
 on:
   push:
     branches:
-      - development
+      - master
 
 # secretsを設定した後に実行。
 name: github-actions-101-yarn-caches
@@ -23,6 +23,7 @@ jobs:
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path # このID（steps.yarn-cache-dir-path.outputs）でアクセスできるようになる
         run: echo "::set-output name=dir::$(yarn cache dir)" # dirプロパティとしてキャッシュを指定
+      - run: ${{ steps.yarn-cache-dir-path.outputs.dir }}
       - uses: actions/cache@v1
         id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
         with:
