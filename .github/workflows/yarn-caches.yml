@@ -35,3 +35,5 @@ jobs:
       # パッケージのインストールを実行
       - run: yarn install
       - run: ls -la
+      - run: cd actions
+      - run: ls -la
