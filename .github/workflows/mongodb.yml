@@ -26,14 +26,14 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-        - name: mongoDB client installation
-          run: sudo apt-get install mongodb-clients
-        - name: Display version of Node.js, npm, Yarn
-          run: |
-            node -v
-            npm -v
-            yarn --version
-            mongo --version
+      - name: mongoDB client installation
+        run: sudo apt-get install mongodb-clients
+      - name: Display version of Node.js, npm, Yarn
+        run: |
+          node -v
+          npm -v
+          yarn --version
+          mongo --version
   # docker-mongodb-github-actions-job:
   #   name: "DockerでNode.js/MongoDBを使用できるかどうかチェック"
   #   runs-on: ubuntu-latest
