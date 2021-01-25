@@ -3,8 +3,8 @@ name: deploy-staging
 on:
   push:
     branches:
-      - "release-v3*" # staging 用
-      - "hotfix-v3*" # staging 用
+      - "release-v3/**" # staging 用
+      - "hotfix-v3/**" # staging 用
 
 
 name: staging-branch-test
